@@ -8,7 +8,7 @@ const searchInput = document.querySelector('#inputSong');
 const buttonInput = document.querySelector('#btnSong');
 
 document.addEventListener('click', function(e){
-    if(e.target == buttonInput || e.target.parentElement == buttonInput || e.target.parentElement.parentElement == buttonInput) search()
+    if(e.target == buttonInput) search()
 })
 
 

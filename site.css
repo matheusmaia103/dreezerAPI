@@ -63,6 +63,10 @@ buttom{
     background-color: var(--primary-color)!important;
 }
 
+svg, path {
+    pointer-events: none;
+}
+
 #result{
     background-color:black;
     color: white;
@@ -178,12 +182,12 @@ img{
     }
 
     50%{
-        box-shadow: 0px 0px 30px 2px var(--primary-color);
+        box-shadow: 0px 0px 30px 2px rgb(89, 204, 23);
 
     }
 
     90%{
-        box-shadow: 1px 0px 18px 2px var(--primary-color);
+        box-shadow: 1px 0px 18px 2px rgb(52, 119, 13);
     }
 
     100%{
