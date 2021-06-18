@@ -8,18 +8,19 @@ const searchInput = document.querySelector('#inputSong');
 const buttonInput = document.querySelector('#btnSong');
 
 document.addEventListener('click', function(e){
-    console.log(e.target);
     if(e.target == buttonInput || e.target.parentElement == buttonInput || e.target.parentElement.parentElement == buttonInput) search()
 })
 
 
 
 function search(){
-    console.warn('iniciando busca');
+    document.querySelector('form').classList.remove("formDown");
+    setTimeout( function(){
+        result.classList.add("aligned");
+        result.innerHTML = '<div class="load"></div>'
+    }
+    ,100);
     let data = searchInput.value;
-    result.classList.add("aligned");
-    result.innerHTML = '<div class="load"></div>'
-
     
     fetch(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${data}`, {
         "method": "GET",
@@ -33,13 +34,14 @@ function search(){
         .then(response => {
             resposta = response;
             musics = resposta.data;
-            console.log(resposta);
-            console.log(musics);
+            
             
             return musics
         })
         .then(musics => {
             result.innerHTML = '';
+            searchInput.value = '';
+            searchInput.blur();
             result.classList.remove("aligned");
 
             
@@ -48,7 +50,7 @@ function search(){
                 
                 result.innerHTML += `
                 
-                <div class="music">
+                <div class="music" id="msc${music.id}">
                     <div class="album">
                         <img src="${music.album.cover_medium}">
                             <div class="title">
@@ -80,6 +82,9 @@ function search(){
 }
 
 function play(musica){
+
+    
+    const msc = document.getElementById(`msc${musica}`)
     const btn = document.getElementById(`btn${musica}`)
     const findAudio = `${musica}`
     const audio = document.getElementById(findAudio);
@@ -89,11 +94,13 @@ function play(musica){
         <i class="fas fa-pause"></i>
         `
         audio.play()
-        audio.addEventListener('ended', function(e){
+        msc.classList.add("musicPlaying")
+        audio.addEventListener('ended', function(){
             btn.innerHTML = `
         <i class="fas fa-play"></i>
         `
         audio.classList.remove("playing")
+        msc.classList.remove("musicPlaying")
         audio.pause()
         })
     } else {
@@ -101,7 +108,7 @@ function play(musica){
         <i class="fas fa-play"></i>
         `
         audio.classList.remove("playing")
+        msc.classList.remove("musicPlaying")
         audio.pause()
     }
-    console.log(audio);
 }
