@@ -4,6 +4,10 @@
     --primary-color: rgb(67 156 17);
 }
 
+body *{
+    box-sizing: border-box;
+}
+
 body{
     background-color: black;
     color: white;
@@ -16,12 +20,12 @@ body{
 
     margin-top: 15px;
 }
-
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 form{
-    background-color: white;
-    width: 450px;
-
-    display: inline-block;
 
 }
 
@@ -35,10 +39,14 @@ input, button, form{
 
 }
 
+.input{
+    border: 1px solid white;
+    width: 400px;
+}
+
 input{
     padding-left: 20px;
-    width: 300px;
-    float: left;
+    width: 100%;
 }
 
 
