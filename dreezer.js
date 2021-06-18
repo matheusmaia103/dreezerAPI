@@ -42,7 +42,7 @@ function search(){
             result.innerHTML = '';
             result.classList.remove("aligned");
 
-
+            
             musics.forEach(music => {
 
                 
@@ -56,10 +56,10 @@ function search(){
                             </div>
                     </div>
                         <div class="audio">
-                            <audio id="${music.id}" src="${music.preview}">
+                            <audio id="${music.id}" preload src="${music.preview}">
                                 Your browser does not support the audio element.
                             </audio>
-                            <button onClick="play(${music.id})">
+                            <button id="btn${music.id}" onClick="play(${music.id})">
                                 <i class=" fas fa-solid fa-play"></i>
                             </button>
                         </div>
@@ -71,6 +71,7 @@ function search(){
                 
             });
 
+
             
         })
     })
@@ -79,12 +80,27 @@ function search(){
 }
 
 function play(musica){
+    const btn = document.getElementById(`btn${musica}`)
     const findAudio = `${musica}`
     const audio = document.getElementById(findAudio);
     if (audio.classList != 'playing' ) {
         audio.classList.add("playing")
+        btn.innerHTML = `
+        <i class="fas fa-pause"></i>
+        `
         audio.play()
+        audio.addEventListener('ended', function(e){
+            btn.innerHTML = `
+        <i class="fas fa-play"></i>
+        `
+        audio.classList.remove("playing")
+        audio.pause()
+        })
     } else {
+        btn.innerHTML = `
+        <i class="fas fa-play"></i>
+        `
+        audio.classList.remove("playing")
         audio.pause()
     }
     console.log(audio);
