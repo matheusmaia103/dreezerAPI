@@ -15,6 +15,7 @@ document.addEventListener('click', function(e){
 
 function search(){
     document.querySelector('form').classList.remove("formDown");
+    searchInput.blur();
     setTimeout( function(){
         result.classList.add("aligned");
         result.innerHTML = '<div class="load"></div>'
@@ -41,7 +42,6 @@ function search(){
         .then(musics => {
             result.innerHTML = '';
             searchInput.value = '';
-            searchInput.blur();
             result.classList.remove("aligned");
 
             
