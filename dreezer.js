@@ -55,7 +55,7 @@ function search(){
                     <div class="album">
                         <img src="${music.album.cover_medium}">
                             <div class="title">
-                               ${music.title}  <div class="artist"> by ${music.artist.name}</div>
+                               ${music.title}  <div class="artist">${music.artist.name}</div>
                             </div>
                     </div>
                         <div class="audio">

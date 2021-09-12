@@ -20,11 +20,14 @@ body{
 form{
     overflow: hidden;
     background-color: white;
-    width: 280px;
-
+    
     display: inline-block;
 
     transition: 0.2s ease;
+
+    width: 60vw;
+    max-width: 400px;
+
 
 }
 
@@ -44,20 +47,27 @@ input{
     width: 180px!important;
     float: left;
     border-radius: 0;
+
+    width: 65%!important;
+    max-width: 500px;
+
 }
 
 
 
 form button{
     float: right;
-    width: 70px;
+    width: 20%!important;
     border-radius: 0 40px 40px  0;
     background-color: var(--primary-color);
     color: white;
+    cursor: pointer!important;
+
 }
 
 buttom{
     background-color: var(--primary-color)!important;
+    cursor: pointer!important;
 }
 
 svg, path {
@@ -136,8 +146,15 @@ img{
 
 .title{
     padding: 20px;
+    color: white;
+    font-weight: bolder;
 
     float:inline-start;
+}
+
+.artist{
+    color:#aaa8a8;
+    font-weight:lighter;
 }
 
 .music button{
@@ -150,6 +167,8 @@ img{
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer!important;
+
 }
 
 @keyframes spin {
