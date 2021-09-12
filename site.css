@@ -28,9 +28,6 @@ form{
 
 }
 
-.formDown{
-    transform: translateY(200px);
-}
 
 input, button, form{
     border-radius: 40px;

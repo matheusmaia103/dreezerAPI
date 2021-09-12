@@ -2,7 +2,8 @@
 let musics = [];
 let data= [];
 let resposta = [];
-result = document.querySelector('#result')
+result = document.querySelector('#result');
+let audios = [];
 
 const searchInput = document.querySelector('#inputSong');
 const buttonInput = document.querySelector('#btnSong');
@@ -58,7 +59,7 @@ function search(){
                             </div>
                     </div>
                         <div class="audio">
-                            <audio id="${music.id}" preload src="${music.preview}">
+                            <audio id="${music.id}" src="${music.preview}">
                                 Your browser does not support the audio element.
                             </audio>
                             <button id="btn${music.id}" onClick="play(${music.id})">
@@ -80,10 +81,10 @@ function search(){
 
 
 }
-
 function play(musica){
 
     
+    audios = document.querySelectorAll('audio');
     const msc = document.getElementById(`msc${musica}`)
     const btn = document.getElementById(`btn${musica}`)
     const findAudio = `${musica}`
@@ -99,6 +100,7 @@ function play(musica){
             btn.innerHTML = `
         <i class="fas fa-play"></i>
         `
+
         audio.classList.remove("playing")
         msc.classList.remove("musicPlaying")
         audio.pause()
